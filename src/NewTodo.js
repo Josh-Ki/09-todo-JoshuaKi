@@ -5,10 +5,10 @@ class NewTodo extends Component {
   render() {
     return (
     <div id="taskList">
-        <form className="taskObject" id="placeholder">
-            <p className="taskDesc">Hello World</p>
-            <button type="button" className="cancelB">X</button>
-            <button type="button" className="completeB" >&check;</button>
+        <form className="taskObject" id={this.props.idname+'a'}>
+            <p className="taskDesc">{this.props.text}</p>
+            <button id={this.props.idname} type="button" className="cancelB" onClick={this.props.cancelB}>X</button>
+            <button id={this.props.idname} type="button" className="completeB" onClick={this.props.completeB}>&check;</button>
         </form>
     </div>
     );
