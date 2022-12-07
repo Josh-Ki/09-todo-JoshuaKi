@@ -12,6 +12,7 @@ class App extends Component {
     this.cancelB = this.cancelB.bind(this);
     this.add = this.add.bind(this);
     this.completeB = this.completeB.bind(this);
+    this.sortodos = this.sortodos.bind(this);
   }
 
   componentDidMount(){
@@ -28,6 +29,14 @@ class App extends Component {
         temp2.state.todos.map((todo) => {if( todo.completed){console.log("nick"); document.getElementById(todo.id+'a').style.backgroundColor="pink";} });
       }
     }
+  }
+
+  sortodos(){
+    console.log(this.state.todos);
+
+    this.setState(state => ({todos : this.state.todos.sort(function compareFn(a, b){return a.text.localeCompare(b.text);})}));
+    console.log(this.state.todos);
+
   }
 
   cancelB = event =>{
@@ -83,8 +92,7 @@ class App extends Component {
     xhttp.setRequestHeader("x-api-key", key);
     xhttp.send(JSON.stringify(data));
     
-    event.target.style.backgroundColor = "pink";
-  }
+    document.getElementById(event.target.id+'a').style.backgroundColor="pink";  }
 
   render() {
     return (
@@ -93,7 +101,7 @@ class App extends Component {
         {this.state.todos.map((todo) =>
           <NewTodo key={todo.id} idname={todo.id} text={todo.text} cancelB={this.cancelB} completeB={this.completeB}/>
         )}
-        <ToDo add={this.add} />
+        <ToDo add={this.add} sortodos={this.sortodos}/>
       </div>
     );
   }

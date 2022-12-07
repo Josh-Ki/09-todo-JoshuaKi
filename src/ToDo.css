@@ -7,7 +7,7 @@
     display: none;
 }
 
-#mainSection{ 
+.mainSection{ 
     position: relative;
     left: 17%;
 }
